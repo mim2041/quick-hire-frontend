@@ -1,4 +1,4 @@
-import { CompaniesSection } from "@/components/home/CompaniesSection";
+import Categories from "@/components/home/Categories";
 import { Hero } from "@/components/home/Hero";
 
 
@@ -6,6 +6,7 @@ const LandingPage = () => {
   return (
     <div>
       <Hero />
+      <Categories />
     </div>
   );
 };
