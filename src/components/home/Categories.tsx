@@ -1,6 +1,4 @@
 import { GoArrowRight } from "react-icons/go";
-import Icon from "@/assets/images/Icon.svg";
-import Image from "next/image";
 import { FaRegMoneyBill1 } from "react-icons/fa6";
 
 const categories = [

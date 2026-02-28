@@ -74,9 +74,8 @@ export function Hero() {
                 </span>
               </h1>
 
-              <p className="mt-12 max-w-md text-sm text-[#515B6F] sm:text-base leading-relaxed font-epilogue">
-                Great platform for the job seeker that searching for new career
-                heights and passionate about startups.
+              <p className="mt-12 max-w-md text-[#515B6F] leading-relaxed font-epilogue">
+                Great platform for the job seeker that searching for new career heights and passionate about startups.
               </p>
 
               <div className="mt-6 sm:mt-8">
