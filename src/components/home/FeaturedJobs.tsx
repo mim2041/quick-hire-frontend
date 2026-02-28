@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { GoArrowRight } from "react-icons/go";
+import JobCard from "./JobCard";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 interface Tag {
@@ -21,14 +22,6 @@ interface Job {
   description: string;
   tags: Tag[];
 }
-
-// ─── Tag color map ────────────────────────────────────────────────────────────
-const tagStyles: Record<Tag["color"], string> = {
-  marketing: "bg-[#fff0f0] text-[#f26b6b]",
-  design: "bg-[#f0f4ff] text-[#5a56e9]",
-  business: "bg-[#f0fdf4] text-[#22c55e]",
-  technology: "bg-[#fdf4ff] text-[#a855f7]",
-};
 
 // ─── Sample data (replace with real data / props / API) ──────────────────────
 const jobs: Job[] = [
@@ -118,7 +111,8 @@ const jobs: Job[] = [
     title: "Brand Strategist",
     company: "GoDaddy",
     location: "Marseille, France",
-    description: "GoDaddy is looking for Brand Strategist to join the team…",
+    description:
+      "GoDaddy is looking for Brand Strategist to join the team… Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
     tags: [{ label: "Marketing", color: "marketing" }],
   },
   {
@@ -134,87 +128,34 @@ const jobs: Job[] = [
   },
 ];
 
-// ─── Single Job Card ─────────────────────────────────────────────────────────
-function JobCard({ job }: { job: Job }) {
-  return (
-    <article
-      className="flex flex-col gap-3 rounded-2xl border border-[#e5e7eb] bg-white p-5
-      hover:shadow-md hover:border-[#5a56e9]/30 transition-all duration-200 cursor-pointer
-      /* mobile: fixed width so cards peek */ min-w-[260px] sm:min-w-0 w-[260px] sm:w-auto flex-shrink-0 sm:flex-shrink"
-    >
-      {/* Top row: logo + badge */}
-      <div className="flex items-center justify-between">
-        <div className="relative h-10 w-10 rounded-lg overflow-hidden border border-[#e5e7eb] bg-[#f9fafb] flex items-center justify-center">
-          {/* Fallback letter if no logo */}
-          <span className="text-lg font-bold text-[#5a56e9]">
-            {job.company[0]}
-          </span>
-          {/* Uncomment when you have real logos:
-          <Image src={job.logo} alt={job.logoAlt} fill className="object-contain p-1" />
-          */}
-        </div>
-        <span className="rounded-full border border-[#5a56e9]/40 bg-[#f0f4ff] px-3 py-1 text-xs font-medium text-[#5a56e9]">
-          {job.type}
-        </span>
-      </div>
-
-      {/* Job info */}
-      <div>
-        <h3 className="text-base font-bold text-[#1e2d4f]">{job.title}</h3>
-        <p className="mt-0.5 text-xs text-[#6b7280]">
-          {job.company} <span className="mx-1">·</span> {job.location}
-        </p>
-      </div>
-
-      <p className="text-xs text-[#6b7280] leading-relaxed line-clamp-2">
-        {job.description}
-      </p>
-
-      {/* Tags */}
-      <div className="flex flex-wrap gap-2 mt-auto pt-1">
-        {job.tags.map((tag) => (
-          <span
-            key={tag.label}
-            className={`rounded-full px-3 py-1 text-xs font-medium ${tagStyles[tag.color]}`}
-          >
-            {tag.label}
-          </span>
-        ))}
-      </div>
-    </article>
-  );
-}
-
-// ─── Featured Jobs Section ────────────────────────────────────────────────────
 export function FeaturedJobs() {
   return (
     <section className="w-full bg-white py-10 sm:py-14">
       {/* Header */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-6 sm:mb-8">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1e2d4f]">
-            Featured <span className="text-[#5a56e9]">jobs</span>
+          <h2 className="text-[32px] lg:text-[48px] font-semibold">
+            Featured <span className="text-[#26A4FF]">Jobs</span>
           </h2>
           {/* Show all jobs — hidden on mobile, shown in footer area instead */}
-          <Link
-            href="/jobs"
-            className="hidden sm:flex items-center gap-1.5 text-sm font-semibold text-[#1e2d4f] hover:text-[#5a56e9] transition-colors"
-          >
-            Show all jobs
-            <GoArrowRight className="h-4 w-4" />
+          <Link href="/jobs" className="hidden md:block">
+            <span className="flex items-center justify-between gap-3 text-[#4640DE] font-semibold font-epilogue">
+              Show all jobs
+              <GoArrowRight />
+            </span>
           </Link>
         </div>
       </div>
 
       {/* ── Mobile: horizontal scroll / swiper ── */}
       <div
-        className="sm:hidden px-4 overflow-x-auto scrollbar-none"
+        className="sm:hidden px-4 ml-4 overflow-x-auto scrollbar-none"
         style={{
           scrollSnapType: "x mandatory",
           WebkitOverflowScrolling: "touch",
         }}
       >
-        <div className="flex gap-4 pb-2" style={{ width: "max-content" }}>
+        <div className="flex gap-4 pb-2 " style={{ width: "max-content" }}>
           {jobs.map((job) => (
             <div key={job.id} style={{ scrollSnapAlign: "start" }}>
               <JobCard job={job} />
@@ -225,7 +166,7 @@ export function FeaturedJobs() {
 
       {/* ── Desktop: 4-column grid in 2 rows ── */}
       <div className="hidden sm:block mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-2 lg:grid-cols-4 md:gap-5 ">
           {jobs.map((job) => (
             <JobCard key={job.id} job={job} />
           ))}
@@ -233,10 +174,10 @@ export function FeaturedJobs() {
       </div>
 
       {/* Mobile: Show all jobs link at the bottom */}
-      <div className="sm:hidden mt-6 px-4">
+      <div className="sm:hidden mt-2 px-4">
         <Link
           href="/jobs"
-          className="flex items-center gap-1.5 text-sm font-semibold text-[#1e2d4f] hover:text-[#5a56e9] transition-colors"
+          className="flex items-center gap-1.5 text-sm font-semibold text-[#4640DE] hover:text-[#5a56e9] transition-colors"
         >
           Show all jobs
           <GoArrowRight className="h-4 w-4" />

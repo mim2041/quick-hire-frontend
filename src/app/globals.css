@@ -86,3 +86,7 @@ body {
 .scrollbar-none::-webkit-scrollbar {
   display: none;             /* Chrome, Safari, Opera */
 }
+
+.primary {
+  color: #4640DE;
+}
