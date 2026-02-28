@@ -1,18 +1,17 @@
 "use client";
 
-import Image from "next/image";
+import { Link } from "@/i18n/navigation";
 
-// ─── Types ───────────────────────────────────────────────────────────────────
 export interface Tag {
   label: string;
   color: "full-time" | "marketing" | "design" | "developer" | "management";
 }
 
 export interface Job {
-  id: number;
-  logo: string;
-  logoAlt: string;
-  logoBg: string;
+  id: string;
+  logo?: string;
+  logoAlt?: string;
+  logoBg?: string;
   title: string;
   company: string;
   location: string;
@@ -33,10 +32,11 @@ const tagStyles: Record<Tag["color"], string> = {
 // ─── Single Job Row ───────────────────────────────────────────────────────────
 export default function JobRow({ job }: { job: Job }) {
   return (
-    <div className="flex flex-col md:flex-row items-start md:items-center gap-4 py-6 px-4 border-b border-[#f1f1f1] last:border-0 transition-colors cursor-pointer group bg-white gap-y-4 my-4">
+    <Link href={`/jobs/${job.id}`}>
+      <div className="flex flex-col md:flex-row items-start md:items-center gap-4 py-6 px-4 border-b border-[#f1f1f1] last:border-0 transition-colors cursor-pointer group bg-white gap-y-4 my-4">
       {/* Logo */}
       <div
-        className={`relative flex-shrink-0 h-12 md:h-16 w-12 md:w-16 rounded-xl  flex items-center justify-center overflow-hidden`}
+        className={`relative shrink-0 h-12 md:h-16 w-12 md:w-16 rounded-xl  flex items-center justify-center overflow-hidden`}
       >
         <span className="text-xl font-extrabold text-[#5a56e9]">
           {job.company[0]}
@@ -54,7 +54,7 @@ export default function JobRow({ job }: { job: Job }) {
           </h3>
 
           {job.sponsored && (
-            <div className="flex-shrink-0 h-6 w-16 relative">
+            <div className="shrink-0 h-6 w-16 relative">
               <span className="text-[10px] font-bold text-[#ef4444] border border-[#ef4444] rounded px-1">
                 semanik
               </span>
@@ -77,6 +77,7 @@ export default function JobRow({ job }: { job: Job }) {
           ))}
         </div>
       </div>
-    </div>
+      </div>
+    </Link>
   );
 }

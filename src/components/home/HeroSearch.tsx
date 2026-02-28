@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
 import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { LuMapPin } from "react-icons/lu";
@@ -21,7 +21,7 @@ export function HeroSearch() {
 
   return (
     <form onSubmit={handleSearch} className="w-full">
-      <div className="flex flex-col gap-3 w-full bg-white  sm:flex-row sm:items-center sm:gap-2 sm:p-2 z-10">
+      <div className="flex flex-col  w-full bg-white  sm:flex-row sm:items-center sm:gap-2 sm:p-2 z-10">
         <div className="flex flex-1 items-center gap-2 rounded-lg  bg-white px-4 py-3 sm:border-0 sm:bg-transparent sm:py-2">
           <CiSearch className="h-5 w-5 shrink-0 font-semibold" />
           <input

@@ -1,14 +1,16 @@
 "use client";
 
+import { Link } from "@/i18n/navigation";
+
 export interface Tag {
   label: string;
   color: "marketing" | "design" | "business" | "technology";
 }
 
 export interface FeaturedJob {
-  id: number;
-  logo: string;
-  logoAlt: string;
+  id: string;
+  logo?: string;
+  logoAlt?: string;
   type: string;
   title: string;
   company: string;
@@ -26,7 +28,8 @@ const tagStyles: Record<Tag["color"], string> = {
 
 function JobCard({ job }: { job: FeaturedJob }) {
   return (
-    <article className="flex flex-col gap-3 border border-[#D6DDEB] p-5 hover:shadow-md transition-all duration-200 cursor-pointer min-w-[260px] sm:min-w-0 w-[260px] sm:w-auto flex-shrink-0 sm:flex-shrink ">
+    <Link href={`/jobs/${job.id}`}>
+      <article className="flex flex-col gap-3 border border-[#D6DDEB] p-5 hover:shadow-md transition-all duration-200 cursor-pointer min-w-[260px] sm:min-w-0 w-[260px] sm:w-auto shrink-0 sm:shrink ">
       {/* Top row: logo + badge */}
       <div className="flex items-center justify-between">
         <div className="relative h-10 w-10  flex items-center justify-center">
@@ -52,7 +55,7 @@ function JobCard({ job }: { job: FeaturedJob }) {
       </div>
 
       <p className="text-xs text-[#7C8493] leading-relaxed line-clamp-2">
-        {job.description.slice(0, 200)}...
+        {job.description.length > 200 ? `${job.description.slice(0, 200)}...` : job.description}
       </p>
 
       {/* Tags */}
@@ -67,6 +70,7 @@ function JobCard({ job }: { job: FeaturedJob }) {
         ))}
       </div>
     </article>
+    </Link>
   );
 }
 

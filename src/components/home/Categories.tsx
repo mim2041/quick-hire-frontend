@@ -1,3 +1,4 @@
+import { Link } from "@/i18n/navigation";
 import { GoArrowRight } from "react-icons/go";
 import { FaRegMoneyBill1 } from "react-icons/fa6";
 
@@ -65,10 +66,10 @@ const Categories = () => {
         <h2 className="text-[32px] lg:text-[48px] font-semibold">
           Explored by <span className="text-[#26A4FF]">Category</span>
         </h2>
-        <button className="flex items-center justify-between gap-3 text-[#4640DE] font-semibold font-epilogue hidden md:block">
+        <Link href="/jobs" className="flex items-center justify-between gap-3 text-[#4640DE] font-semibold font-epilogue hidden md:block">
           <span>Show all jobs</span>
           <GoArrowRight />
-        </button>
+        </Link>
       </div>
 
       <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
@@ -91,10 +92,10 @@ const Categories = () => {
         ))}
       </div>
 
-      <button className="flex items-center justify-between gap-3 text-[#4640DE] font-semibold font-epilogue md:hidden mt-4">
+      <Link href="/jobs" className="flex items-center justify-between gap-3 text-[#4640DE] font-semibold font-epilogue md:hidden mt-4">
         <span>Show all jobs</span>
         <GoArrowRight />
-      </button>
+      </Link>
     </div>
   );
 };

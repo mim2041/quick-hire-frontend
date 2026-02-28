@@ -21,7 +21,7 @@ export function Hero() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative overflow-b-hidden  px-4  pt-4 sm:px-6 lg:px-8 lg:pt-8">
+      <section className="relative overflow-b-hidden  pt-4 lg:pt-8">
         {/* Pattern background — bleeds into/behind navbar on desktop */}
         <div
           className="pointer-events-none absolute right-0 top-[-80px] hidden lg:block"
@@ -50,8 +50,8 @@ export function Hero() {
           />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl">
-          <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
+        <div className="relative z-10 mx-auto max-w-7xl ">
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-1">
             {/* Left: Text + Search */}
             <div>
               <h1 className="text-3xl font-extrabold tracking-tight text-[#1e2d4f] sm:text-[48px] lg:text-[72px] leading-tight">
@@ -75,7 +75,8 @@ export function Hero() {
               </h1>
 
               <p className="mt-12 max-w-md text-[#515B6F] leading-relaxed font-epilogue">
-                Great platform for the job seeker that searching for new career heights and passionate about startups.
+                Great platform for the job seeker that searching for new career
+                heights and passionate about startups.
               </p>
 
               <div className="mt-6 sm:mt-8">
@@ -102,8 +103,8 @@ export function Hero() {
       </section>
 
       {/* Companies Section */}
-      <section className="relative z-10 bg-white/60 px-4 py-8 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
+      <section className="relative z-10 bg-white/60 py-8 ">
+        <div className="mx-auto max-w-7xl ">
           <p className="mb-5 text-sm text-gray-400 font-epilogue ">
             Companies we helped grow
           </p>
