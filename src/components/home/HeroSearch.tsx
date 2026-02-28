@@ -2,6 +2,9 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { CiSearch } from "react-icons/ci";
+import { LuMapPin } from "react-icons/lu";
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 export function HeroSearch() {
   const router = useRouter();
@@ -18,44 +21,37 @@ export function HeroSearch() {
 
   return (
     <form onSubmit={handleSearch} className="w-full">
-      <div className="flex flex-col gap-3 rounded-xl bg-white p-3 shadow-sm sm:flex-row sm:items-center sm:gap-2 sm:p-2">
-        <div className="flex flex-1 items-center gap-2 rounded-lg border border-[#e5e7eb] bg-white px-4 py-3 sm:border-0 sm:bg-transparent sm:py-2">
-          <svg className="h-5 w-5 shrink-0 text-[#6b7280]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
+      <div className="flex flex-col gap-3 w-full bg-white shadow-sm sm:flex-row sm:items-center sm:gap-2 sm:p-2 z-10">
+        <div className="flex flex-1 items-center gap-2 rounded-lg  bg-white px-4 py-3 sm:border-0 sm:bg-transparent sm:py-2">
+          <CiSearch className="h-5 w-5 shrink-0 font-semibold" />
           <input
             type="text"
             placeholder="Job title or keyword"
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
-            className="min-w-0 flex-1 bg-transparent text-[#2e3a59] placeholder:text-[#9ca3af] focus:outline-none"
+            className="border-b border-[#D6DDEB] py-3 flex-1 bg-transparent text-[#2e3a59] placeholder:text-[#D6DDEB] focus:outline-none"
           />
         </div>
-        <div className="flex flex-1 items-center gap-2 rounded-lg border border-[#e5e7eb] bg-white px-4 py-3 sm:border-0 sm:bg-transparent sm:py-2">
-          <svg className="h-5 w-5 shrink-0 text-[#6b7280]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-          </svg>
+        <div className="flex flex-1 items-center gap-2 rounded-lg bg-white px-4 py-3 sm:border-0 sm:bg-transparent sm:py-2">
+          <LuMapPin />
           <input
             type="text"
             placeholder="Location"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="min-w-0 flex-1 bg-transparent text-[#2e3a59] placeholder:text-[#9ca3af] focus:outline-none"
+            className="min-w-0 border-b border-[#D6DDEB] py-3 flex-1 bg-transparent text-[#25324B] placeholder:text-[#9ca3af] focus:outline-none"
           />
-          <svg className="h-4 w-4 shrink-0 text-[#6b7280]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
+          <MdKeyboardArrowDown className="text-[#25324B] font-bold text-2xl" />
         </div>
         <button
           type="submit"
-          className="w-full rounded-lg bg-[#5a56e9] px-6 py-3 font-medium text-white hover:bg-[#4844c7] transition-colors sm:w-auto"
+          className="w-full bg-[#5a56e9] px-6 py-3 font-medium text-white hover:bg-[#4844c7] transition-colors sm:w-auto truncate"
         >
           Search my job
         </button>
       </div>
-      <p className="mt-3 text-sm text-[#6b7280]">
-        Popular:{" "}
+      <p className="mt-3 font-epilogue text-[#6b7280]">
+        Popular: <br className="md:hidden" />
         <span className="text-[#2e3a59]">
           UI Designer, UX Researcher, Android, Admin
         </span>

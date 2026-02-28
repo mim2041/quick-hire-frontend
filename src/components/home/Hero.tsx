@@ -3,66 +3,25 @@ import heroImg from "@/assets/images/hero-img.svg";
 import textDecorator from "@/assets/images/text-decorator.svg";
 import pattern from "@/assets/images/Pattern.svg";
 import Image from "next/image";
+import vodaphone from "@/assets/logos/vodafone.svg";
+import intel from "@/assets/logos/intel.svg";
+import tesla from "@/assets/logos/tesla.svg";
+import amd from "@/assets/logos/amd.svg";
+import talkit from "@/assets/logos/talkit.svg";
 
-// Company logos – using inline SVG placeholders that mirror the grayscale wordmark style
 const companies = [
-  {
-    name: "Vodafone",
-    logo: (
-      <div className="flex items-center gap-1.5">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="11" stroke="#9ca3af" strokeWidth="2" />
-          <path
-            d="M8 12c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4"
-            stroke="#9ca3af"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-        </svg>
-        <span className="text-sm font-semibold text-[#9ca3af] tracking-wide">
-          vodafone
-        </span>
-      </div>
-    ),
-  },
-  {
-    name: "Intel",
-    logo: (
-      <span className="text-sm font-bold text-[#9ca3af] tracking-widest">
-        intel.
-      </span>
-    ),
-  },
-  {
-    name: "Tesla",
-    logo: (
-      <span className="text-sm font-semibold text-[#9ca3af] tracking-[0.3em]">
-        TESLA
-      </span>
-    ),
-  },
-  {
-    name: "AMD",
-    logo: (
-      <span className="text-sm font-bold text-[#9ca3af] tracking-wider">
-        AMD
-        <span className="inline-block rotate-[15deg] origin-bottom-left">
-          ⌐
-        </span>
-      </span>
-    ),
-  },
-  {
-    name: "Talkit",
-    logo: <span className="text-sm font-bold text-[#9ca3af]">Talkit</span>,
-  },
+  { logo: vodaphone, name: "Vodafone" },
+  { logo: intel, name: "Intel" },
+  { logo: tesla, name: "Tesla" },
+  { logo: amd, name: "AMD" },
+  { logo: talkit, name: "Talkit" },
 ];
 
 export function Hero() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative overflow-visible px-4 pb-12 pt-4 sm:px-6 lg:px-8 lg:pt-8">
+      <section className="relative overflow-b-hidden  px-4  pt-4 sm:px-6 lg:px-8 lg:pt-8">
         {/* Pattern background — bleeds into/behind navbar on desktop */}
         <div
           className="pointer-events-none absolute right-0 top-[-80px] hidden lg:block"
@@ -103,10 +62,7 @@ export function Hero() {
                 <span className="relative text-[#26A4FF]">
                   5000+ Jobs
                   {/* Blue brush underline */}
-                  <span
-                    className="absolute left-0 block w-full"
-                    aria-hidden
-                  >
+                  <span className="absolute left-0 block w-full" aria-hidden>
                     <Image
                       src={textDecorator}
                       alt=""
@@ -118,7 +74,7 @@ export function Hero() {
                 </span>
               </h1>
 
-              <p className="mt-8 max-w-md text-sm text-[#6b7280] sm:text-base leading-relaxed">
+              <p className="mt-12 max-w-md text-sm text-[#515B6F] sm:text-base leading-relaxed font-epilogue">
                 Great platform for the job seeker that searching for new career
                 heights and passionate about startups.
               </p>
@@ -126,16 +82,11 @@ export function Hero() {
               <div className="mt-6 sm:mt-8">
                 <HeroSearch />
               </div>
-
-              <p className="mt-3 text-xs text-[#6b7280]">
-                <span className="font-medium">Popular :</span> UI Designer, UX
-                Researcher, Android, Admin
-              </p>
             </div>
 
             {/* Right: Hero image (desktop only) */}
-            <div className="relative hidden lg:flex justify-end">
-              <div className="relative h-[707px] w-full max-w-lg">
+            <div className="relative hidden lg:flex justify-end z-1">
+              <div className="relative h-[600px] w-full max-w-lg">
                 <Image
                   src={heroImg}
                   alt="Job seeker smiling"
@@ -143,6 +94,8 @@ export function Hero() {
                   className="object-contain object-center"
                   priority
                 />
+
+                <div className="absolute -bottom-20 -right-4 w-68 rotate-[-30deg] h-40 bg-white "></div>
               </div>
             </div>
           </div>
@@ -152,27 +105,27 @@ export function Hero() {
       {/* Companies Section */}
       <section className="relative z-10 bg-white/60 px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <p className="mb-5 text-sm text-[#6b7280]">
+          <p className="mb-5 text-sm text-gray-400 font-epilogue ">
             Companies we helped grow
           </p>
 
           {/* Desktop: single row */}
-          <div className="hidden sm:flex items-center gap-8 lg:gap-12 flex-wrap">
-            {companies.map((c) => (
+          <div className="hidden md:flex items-center gap-8 lg:gap-12 flex-wrap w-full justify-between">
+            {companies.map((c, i) => (
               <div
-                key={c.name}
+                key={i}
                 className="flex items-center opacity-60 hover:opacity-100 transition-opacity"
               >
-                {c.logo}
+                <Image src={c.logo} alt={c.name} width={100} height={100} />
               </div>
             ))}
           </div>
 
           {/* Mobile: 2-column grid */}
-          <div className="grid grid-cols-2 gap-x-6 gap-y-5 sm:hidden">
-            {companies.map((c) => (
-              <div key={c.name} className="flex items-center opacity-60">
-                {c.logo}
+          <div className="md:hidden grid grid-cols-2 gap-x-6 gap-y-5">
+            {companies.map((c, i) => (
+              <div key={i} className="flex items-center opacity-60">
+                <Image src={c.logo} alt={c.name} width={100} height={100} />
               </div>
             ))}
           </div>
