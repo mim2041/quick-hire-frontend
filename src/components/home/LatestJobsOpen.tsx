@@ -42,6 +42,7 @@ export function LatestJobsOpen() {
       .then((res) => {
         if (cancelled) return;
         setJobs((res.data ?? []).map(mapApiJobToRow));
+        console.log(res.data);
       })
       .catch((err) => {
         if (cancelled) return;
@@ -89,12 +90,14 @@ export function LatestJobsOpen() {
   return (
     <section className="relative w-full py-10 sm:py-14 overflow-hidden bg-[#F8F8FD]">
       <div className="absolute -top-10 -left-5 w-32 h-16 bg-white rotate-[-25deg]" />
-      <div className="absolute -bottom-7 -right-6 w-40 h-16 bg-white rotate-[-25deg]" />
+      {/* <div className="absolute -bottom-7 -right-6 w-40 h-16 bg-white rotate-[-25deg]" /> */}
+      <div className="hidden lg:block absolute -top-28 right-20 w-[400px] h-[192px] bg-transparent border-1 border-[#CCCCF5] rotate-[-25deg]" />
+      <div className="hidden lg:block absolute -bottom-28 right-20 w-[770px] h-[319px] bg-transparent border-1 border-[#CCCCF5] rotate-[-25deg]" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-0">
         <div className="flex items-center justify-between mb-6 sm:mb-8">
           <h2 className="text-[32px] lg:text-[48px] font-semibold">
-            Featured <span className="text-[#26A4FF]">Jobs Open</span>
+            Latest <span className="text-[#26A4FF]">Jobs Open</span>
           </h2>
           <Link href="/jobs" className="hidden md:block">
             <span className="flex items-center justify-between gap-3 text-[#4640DE] font-semibold font-epilogue">

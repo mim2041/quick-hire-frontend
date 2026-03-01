@@ -103,12 +103,12 @@ export function JobDetailClient({ job }: JobDetailClientProps) {
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-2 shrink-0">
-            <span className="px-3 py-1.5 text-sm font-medium bg-[#f0f4ff] text-[#5a56e9] rounded">
+            <span className="px-3 py-2.5 text-sm font-medium bg-[#f0f4ff] text-[#5a56e9] rounded">
               {job.category}
             </span>
             <Button
               type="button"
-              size="lg"
+              // size="lg"
               onClick={() => setModalOpen(true)}
               className="shrink-0"
             >

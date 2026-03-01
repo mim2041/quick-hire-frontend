@@ -1,25 +1,30 @@
 import { Link } from "@/i18n/navigation";
 import { GoArrowRight } from "react-icons/go";
-import { FaRegMoneyBill1 } from "react-icons/fa6";
+import { FaCode, FaRegMoneyBill1 } from "react-icons/fa6";
+import { MdOutlineDesignServices } from "react-icons/md";
+import { IoMdStats } from "react-icons/io";
+import { GrAnnounce } from "react-icons/gr";
+import { HiOutlineDesktopComputer, HiOutlineUserGroup } from "react-icons/hi";
+import { LuBriefcaseBusiness } from "react-icons/lu";
 
 const categories = [
   {
     id: 1,
     title: "Design",
     available: 235,
-    icon: FaRegMoneyBill1,
+    icon: MdOutlineDesignServices,
   },
   {
     id: 2,
     title: "Sales",
-    available: 235,
-    icon: FaRegMoneyBill1,
+    available: 756,
+    icon: IoMdStats,
   },
   {
     id: 3,
     title: "Marketing",
-    available: 235,
-    icon: FaRegMoneyBill1,
+    available: 140,
+    icon: GrAnnounce,
   },
   {
     id: 4,
@@ -30,26 +35,26 @@ const categories = [
   {
     id: 5,
     title: "Technology",
-    available: 235,
-    icon: FaRegMoneyBill1,
+    available: 436,
+    icon: HiOutlineDesktopComputer,
   },
   {
     id: 6,
     title: "Engineering",
-    available: 235,
-    icon: FaRegMoneyBill1,
+    available: 542,
+    icon: FaCode,
   },
   {
     id: 7,
     title: "Business",
     available: 211,
-    icon: FaRegMoneyBill1,
+    icon: LuBriefcaseBusiness,
   },
   {
     id: 8,
     title: "Human Resource",
     available: 346,
-    icon: FaRegMoneyBill1,
+    icon: HiOutlineUserGroup,
   },
   {
     id: 9,
