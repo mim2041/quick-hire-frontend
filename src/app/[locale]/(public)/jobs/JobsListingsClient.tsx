@@ -21,7 +21,24 @@ const CATEGORY_OPTIONS = [
 ];
 const LOCATION_OPTIONS = ["All"];
 
+function getPlainTextDescription(description?: string) {
+  if (!description) return "";
+
+  return description
+    .replace(/<[^>]*>/g, " ")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;/gi, "'")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function JobListingCard({ job }: { job: ApiJob }) {
+  const plainDescription = getPlainTextDescription(job.description);
+
   return (
     <Link href={`/jobs/${job._id}`}>
       <article className="flex flex-col gap-3 border border-[#D6DDEB] p-5 rounded-lg hover:shadow-md transition-all duration-200 cursor-pointer bg-white">
@@ -40,7 +57,7 @@ function JobListingCard({ job }: { job: ApiJob }) {
           </p>
         </div>
         <p className="text-sm text-[#7C8493] leading-relaxed line-clamp-2">
-          {job.description}
+          {plainDescription || "No description available."}
         </p>
         <div className="flex flex-wrap gap-2">
           <span className="rounded-full px-3 py-1 text-xs font-medium bg-[#f0f4ff] text-[#5a56e9]">
