@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
-import { Link } from "@/i18n/navigation";
 import type { ApiJob } from "@/core/api";
 import { submitApplication } from "@/core/api";
 import { Button } from "@/components/ui";
@@ -122,7 +121,7 @@ export function JobDetailClient({ job }: JobDetailClientProps) {
             Job Description
           </h2>
           <div
-            className="text-[#515B6F] leading-relaxed prose prose-sm max-w-none prose-headings:text-[#2e3a59] prose-strong:text-[#2e3a59]"
+            className="text-[#515B6F] leading-relaxed prose prose-sm max-w-none wrap-anywhere prose-headings:text-[#2e3a59] prose-strong:text-[#2e3a59] [&_p]:wrap-break-word [&_li]:wrap-break-word [&_h1]:wrap-break-word [&_h2]:wrap-break-word [&_h3]:wrap-break-word [&_h4]:wrap-break-word [&_h5]:wrap-break-word [&_h6]:wrap-break-word [&_span]:wrap-break-word [&_a]:break-all"
             dangerouslySetInnerHTML={{ __html: job.description }}
           />
         </div>
